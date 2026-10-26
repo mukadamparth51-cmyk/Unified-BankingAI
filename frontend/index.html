@@ -1,0 +1,1327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unified Banking AI - Enterprise Fintech Suite</title>
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Top Navigation & System Bar -->
+  <header class="app-header">
+    <div class="header-container">
+      <div class="brand">
+        <div class="brand-icon">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
+          </svg>
+        </div>
+        <div>
+          <h1 class="brand-title">Unified Banking AI</h1>
+          <span class="brand-subtitle">Autonomous Financial Cybersecurity & Intelligent Banking Core</span>
+        </div>
+      </div>
+
+      <!-- Core Module Tabs (Strictly 1, 2, 3 in Order) -->
+      <nav class="module-nav" role="tablist">
+        <button class="nav-tab active" data-module="fraud-detector" role="tab" aria-selected="true">
+          <span class="tab-num">1</span>
+          <span class="tab-label">Fraud Detector AI</span>
+          <span class="tab-badge">Recovery Engine</span>
+        </button>
+        <button class="nav-tab" data-module="smart-id" role="tab" aria-selected="false">
+          <span class="tab-num">2</span>
+          <span class="tab-label">Smart ID</span>
+          <span class="tab-badge">AML & KYC</span>
+        </button>
+        <button class="nav-tab" data-module="loanfast" role="tab" aria-selected="false">
+          <span class="tab-num">3</span>
+          <span class="tab-label">AI Loan Detector — AI LoanFast 72</span>
+          <span class="tab-badge">72h SLA</span>
+        </button>
+      </nav>
+
+      <!-- Active Customer Profile & Role Selector (Simulated Session Context) -->
+      <div class="user-session-bar" id="userSessionBar">
+        <div class="session-label-group">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+            <circle cx="12" cy="7" r="4"></circle>
+          </svg>
+          <span class="session-label">Session:</span>
+        </div>
+        <select id="activeCustomerSelect" class="session-select" aria-label="Select Active Customer Profile">
+          <option value="CUST-101" data-name="Rohan Deshmukh" data-role="customer">CUST-101: Rohan Deshmukh (Salaried - Ready)</option>
+          <option value="CUST-102" data-name="Priya Sharma" data-role="customer">CUST-102: Priya Sharma (Expired/Rejected Docs)</option>
+          <option value="CUST-103" data-name="Aarav Mehta" data-role="customer">CUST-103: Aarav Mehta (New Applicant - Missing Docs)</option>
+          <option value="MGR-001" data-name="Vikram Malhotra" data-role="bank_manager">MGR-001: Vikram Malhotra (Bank Manager Oversight)</option>
+        </select>
+        <span id="activeRoleChip" class="status-chip chip-primary">Customer</span>
+      </div>
+
+      <div class="system-status">
+        <span class="status-dot"></span>
+        <span class="status-text">RBI & NPCI UDIR Compliant</span>
+      </div>
+    </div>
+  </header>
+
+  <!-- Emergency 1930 Cyber Cell Banner -->
+  <aside class="emergency-banner" id="emergencyBanner">
+    <div class="emergency-content">
+      <div class="emergency-badge">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+          <circle cx="12" cy="12" r="10"></circle>
+          <line x1="12" y1="8" x2="12" y2="12"></line>
+          <line x1="12" y1="16" x2="12.01" y2="16"></line>
+        </svg>
+        <span>EMERGENCY FRAUD ASSISTANCE (INDIA)</span>
+      </div>
+      <div class="emergency-text">
+        <strong>Golden Hour Advisory:</strong> Report unauthorized financial debits within <strong>2 hours</strong> to trigger the Citizen Financial Cyber Fraud Reporting System (CFCFRMS) and place immediate liens on recipient mule accounts.
+      </div>
+      <div class="emergency-actions">
+        <a href="tel:1930" class="btn-emergency">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          Dial 1930 Helpline
+        </a>
+        <a href="https://cybercrime.gov.in/" target="_blank" rel="noopener noreferrer" class="btn-portal">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+          cybercrime.gov.in
+        </a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="main-container">
+
+    <!-- ============================================================= -->
+    <!-- MODULE 1: FRAUD DETECTOR AI                                   -->
+    <!-- ============================================================= -->
+    <section id="module-fraud-detector" class="module-view active">
+      
+      <!-- Sub-Navigation for Module 1 -->
+      <div class="sub-nav-bar">
+        <div class="sub-nav-title">
+          <h2>Module 1: Fraud Detector AI</h2>
+          <p>Autonomous Fraud Detection & End-to-End Direct Refund Recovery Lifecycle</p>
+        </div>
+        <div class="sub-tabs">
+          <button class="sub-tab active" data-subtab="refund-engine">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"></path><path d="M3 3v5h5"></path></svg>
+            AI Direct Refund Recovery Engine
+          </button>
+          <button class="sub-tab" data-subtab="tracking-dashboard">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+            Recovery Tracking Dashboard
+          </button>
+          <button class="sub-tab" data-subtab="transaction-scanner">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+            Real-Time Transaction Scanner
+          </button>
+        </div>
+      </div>
+
+      <!-- SUB-TAB 1: AI DIRECT REFUND RECOVERY ENGINE -->
+      <div id="subtab-refund-engine" class="subtab-content active">
+        
+        <!-- Gemma 4 Local AI Hardware & Inference Status Card -->
+        <div class="gemma-status-card" id="gemmaStatusCard">
+          <div class="gemma-header">
+            <div class="gemma-title-group">
+              <div class="gemma-logo-badge">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <circle cx="12" cy="12" r="3"></circle>
+                  <path d="M12 2v3M12 19v3M2 12h3M19 12h3M4.93 4.93l2.12 2.12M16.95 16.95l2.12 2.12M4.93 19.07l2.12-2.12M16.95 7.05l2.12-2.12"></path>
+                </svg>
+              </div>
+              <div>
+                <h4 class="gemma-title">Google Gemma 4 Local Inference Engine</h4>
+                <span class="gemma-subtitle">Zero Cloud LLM Dependency • 100% On-Device Financial Data Privacy</span>
+              </div>
+            </div>
+            <div class="gemma-badges">
+              <span class="badge-status-green" id="gemmaStatusBadge">● LOCAL ENGINE ACTIVE</span>
+              <span class="badge-pill" id="gemmaModelBadge">Gemma 4 E2B (INT4)</span>
+            </div>
+          </div>
+
+          <div class="gemma-grid">
+            <div class="gemma-metric">
+              <span class="gemma-label">Hardware Profile Detected</span>
+              <strong id="gemmaHwProfile" class="gemma-val">Intel Core Ultra 5 (14 Cores) • 15.44 GB RAM</strong>
+            </div>
+            <div class="gemma-metric">
+              <span class="gemma-label">GPU / Acceleration</span>
+              <strong id="gemmaGpuProfile" class="gemma-val">Intel Integrated Graphics (No CUDA GPU)</strong>
+            </div>
+            <div class="gemma-metric">
+              <span class="gemma-label">Execution Mode</span>
+              <strong id="gemmaExecProfile" class="gemma-val">Multi-Threaded CPU INT4 Quantized Inference</strong>
+            </div>
+            <div class="gemma-metric">
+              <span class="gemma-label">Offline Inference Status</span>
+              <strong class="gemma-val text-success">✓ Air-Gapped / Offline Ready</strong>
+            </div>
+          </div>
+        </div>
+
+        <!-- Mandatory AI Disclaimer Notice Banner -->
+        <div class="mandatory-ai-disclaimer">
+          <div class="disclaimer-icon">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <circle cx="12" cy="12" r="10"></circle>
+              <line x1="12" y1="8" x2="12" y2="12"></line>
+              <line x1="12" y1="16" x2="12.01" y2="16"></line>
+            </svg>
+          </div>
+          <div class="disclaimer-content">
+            <strong>Mandatory AI & Regulatory Notice:</strong>
+            <span>AI analysis is preliminary and does not establish fraud, determine legal liability, or guarantee refund eligibility. Final decisions depend on the relevant bank, payment provider, applicable rules, evidence, and authorized review.</span>
+          </div>
+        </div>
+
+        <!-- Guardrail Alert -->
+        <div class="guardrail-callout">
+          <div class="callout-icon">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </div>
+          <div class="callout-body">
+            <h4>Cybersecurity & Regulatory Guardrail Notice</h4>
+            <p>
+              The AI Direct Refund Recovery Engine assists customers by preparing legitimate dispute dossiers, 
+              evaluating statutory eligibility under RBI Circular RBI/2017-18/15, and facilitating authorized bank requests. 
+              <strong>We never guarantee a full refund</strong> nor claim that AI can independently force a financial institution to return funds. 
+              <strong>Never enter or upload bank passwords, UPI PINs, OTPs, or CVVs.</strong>
+            </p>
+          </div>
+        </div>
+
+        <div class="grid-2col">
+          <!-- 1. Customer Fraud Report Form -->
+          <div class="card">
+            <div class="card-header">
+              <div class="card-title-group">
+                <span class="step-badge">Section 1</span>
+                <h3>Customer Fraud Report Intake</h3>
+              </div>
+              <div class="badge-group">
+                <span class="section-tag badge-customer">CUSTOMER PROVIDED</span>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <form id="fraudReportForm">
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="repCustomerName">Full Name *</label>
+                    <input type="text" id="repCustomerName" class="form-control" placeholder="e.g. Parth Patil" required>
+                  </div>
+                  <div class="form-group">
+                    <label for="repCustomerPhone">Registered Mobile *</label>
+                    <input type="tel" id="repCustomerPhone" class="form-control" placeholder="+91 98765 43210" required>
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="repAmount">Transaction Amount (₹) *</label>
+                    <div class="input-with-prefix">
+                      <span class="currency-prefix">₹</span>
+                      <input type="number" id="repAmount" class="form-control" placeholder="45000" min="1" step="any" required>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="repTxnTime">Transaction Date & Time *</label>
+                    <input type="datetime-local" id="repTxnTime" class="form-control" required>
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="repUtr">UTR / RRN / Reference No *</label>
+                    <input type="text" id="repUtr" class="form-control" placeholder="e.g. 418290192837 (12-digit)" required>
+                    <small class="field-hint">12-digit UTR for UPI/IMPS or Bank Reference Number</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="repPaymentMethod">Payment Method *</label>
+                    <select id="repPaymentMethod" class="form-control" required>
+                      <option value="UPI">UPI (Google Pay, PhonePe, Paytm, BHIM)</option>
+                      <option value="Bank Transfer">Bank Transfer (IMPS / NEFT / RTGS)</option>
+                      <option value="Credit Card">Credit Card</option>
+                      <option value="Debit Card">Debit Card</option>
+                      <option value="Net Banking">Net Banking</option>
+                      <option value="Mobile Wallet">Mobile Prepaid Wallet</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="repBank">Issuing Bank or Provider *</label>
+                    <select id="repBank" class="form-control" required>
+                      <option value="HDFC Bank">HDFC Bank</option>
+                      <option value="State Bank of India">State Bank of India (SBI)</option>
+                      <option value="ICICI Bank">ICICI Bank</option>
+                      <option value="Axis Bank">Axis Bank</option>
+                      <option value="Punjab National Bank">Punjab National Bank (PNB)</option>
+                      <option value="Kotak Mahindra Bank">Kotak Mahindra Bank</option>
+                      <option value="Other">Other Bank / Fintech Provider</option>
+                    </select>
+                  </div>
+                  <div class="form-group">
+                    <label for="repBeneficiary">Beneficiary Details (If known)</label>
+                    <input type="text" id="repBeneficiary" class="form-control" placeholder="UPI ID (VPA) or Account/IFSC">
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="repDescription">Description of What Happened *</label>
+                  <textarea id="repDescription" class="form-control" rows="4" placeholder="Detail the scam chronology: e.g. Received a call claiming electricity bill disconnection; instructed to install QuickSupport or scan QR to receive payment..." required></textarea>
+                  <div class="security-warning-chip">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <span>Automatic Credential Shield: Any accidental passwords, PINs, OTPs, or CVVs will be permanently redacted before saving.</span>
+                  </div>
+                </div>
+
+                <!-- Evidence File Upload Component -->
+                <div class="form-group">
+                  <label>Supporting Screenshots or Documents</label>
+                  <div class="dropzone" id="evidenceDropzone">
+                    <input type="file" id="evidenceFileInput" class="file-input-hidden" accept="image/*,.pdf">
+                    <div class="dropzone-content">
+                      <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                      </svg>
+                      <p><strong>Click to upload</strong> or drag & drop Bank SMS screenshots or Statement</p>
+                      <span class="text-muted">PNG, JPG, PDF up to 10MB • Auto SHA-256 Hashing</span>
+                    </div>
+                  </div>
+                  <div id="uploadedFilesList" class="file-chips-container"></div>
+                </div>
+
+                <button type="submit" id="btnSubmitReport" class="btn btn-primary btn-block">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+                  Run AI Fraud Case Analyzer & Assess Eligibility
+                </button>
+              </form>
+            </div>
+          </div>
+
+          <!-- 2 & 3. AI Analysis & Refund Eligibility Assistant Results -->
+          <div class="card" id="analysisResultCard">
+            <div class="card-header">
+              <div class="card-title-group">
+                <span class="step-badge">Sections 2-4</span>
+                <h3>AI Fraud Intelligence & Eligibility Assistant</h3>
+              </div>
+              <div class="badge-group">
+                <span class="section-tag badge-ai">AI ANALYSIS</span>
+                <span class="section-tag badge-manual">MANUAL REVIEW</span>
+                <span id="analysisStatusChip" class="status-chip chip-secondary">Awaiting Intake</span>
+              </div>
+            </div>
+
+            <div class="card-body">
+              <div id="analysisPlaceholder" class="empty-state">
+                <div class="empty-icon">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+                    <polyline points="14 2 14 8 20 8"></polyline>
+                    <line x1="16" y1="13" x2="8" y2="13"></line>
+                    <line x1="16" y1="17" x2="8" y2="17"></line>
+                    <polyline points="10 9 9 9 8 9"></polyline>
+                  </svg>
+                </div>
+                <h4>No Report Analyzed Yet</h4>
+                <p>Fill out the customer fraud report on the left or select a sample case from the Tracking Dashboard to inspect AI classifications, evidence gap analysis, and statutory eligibility under RBI guidelines.</p>
+              </div>
+
+              <!-- Active Analysis View (Populated via JS) -->
+              <div id="analysisContent" class="analysis-results hidden">
+                <!-- Case Header & Reference -->
+                <div class="analysis-header-banner">
+                  <div>
+                    <span class="meta-label">Case Reference</span>
+                    <h3 id="resCaseRef" class="case-ref-tag">UB-CASE-2026-XXXX</h3>
+                  </div>
+                  <div>
+                    <span class="meta-label">Initial Status</span>
+                    <span id="resCaseStatus" class="status-chip chip-warning">Evidence Required</span>
+                  </div>
+                </div>
+
+                <!-- Section 2: AI Fraud Case Analyzer Breakdown -->
+                <div class="intelligence-section">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                    <h4 class="section-title" style="margin-bottom:0;">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/></svg>
+                      Section 2: AI Fraud Case Analyzer (Gemma 4)
+                    </h4>
+                    <span class="section-tag badge-ai">AI ANALYSIS</span>
+                  </div>
+                  
+                  <div class="metric-row">
+                    <div class="metric-box">
+                      <span class="metric-label">Fraud Typology</span>
+                      <strong id="resFraudType" class="text-primary">-</strong>
+                    </div>
+                    <div class="metric-box">
+                      <span class="metric-label">AI Confidence</span>
+                      <strong id="resConfidence">-</strong>
+                    </div>
+                    <div class="metric-box">
+                      <span class="metric-label">Mule Account Risk</span>
+                      <strong id="resMuleRisk" class="text-danger">-</strong>
+                    </div>
+                  </div>
+
+                  <div class="summary-box">
+                    <strong>Executive Case Summary:</strong>
+                    <p id="resExecutiveSummary" class="text-sm">-</p>
+                  </div>
+
+                  <!-- Suspected vs Verified Fraud Distinction Banner -->
+                  <div class="uncertainty-banner">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+                    <p id="resUncertaintyNote">Distinction: Suspected Fraud (Pending Bank Adjudication). AI analysis does not establish legal fraud.</p>
+                  </div>
+
+                  <!-- Section 3: Evidence Analysis & Forensics -->
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-top:1.25rem; margin-bottom:0.5rem;">
+                    <h5 style="font-weight:700; color:var(--text-main); margin-bottom:0;">
+                      Section 3: Evidence Analysis & Forensics
+                    </h5>
+                    <div>
+                      <span class="section-tag badge-customer">CUSTOMER PROVIDED</span>
+                      <span class="section-tag badge-verified">VERIFIED</span>
+                    </div>
+                  </div>
+
+                  <!-- Missing Evidence & Inconsistencies -->
+                  <div id="missingEvidenceBox" class="callout-warning hidden">
+                    <h5>Evidence Gaps & Inconsistencies Detected:</h5>
+                    <ul id="resMissingList" class="bullet-list"></ul>
+                  </div>
+                </div>
+
+                <!-- Section 4: Refund Eligibility Assistant Breakdown -->
+                <div class="eligibility-section">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                    <h4 class="section-title" style="margin-bottom:0;">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+                      Section 4: Refund Eligibility Assistant (RBI Framework)
+                    </h4>
+                    <div>
+                      <span class="section-tag badge-manual">MANUAL REVIEW</span>
+                      <span class="section-tag badge-verified">VERIFIED</span>
+                    </div>
+                  </div>
+
+                  <div class="eligibility-badge-card" id="resEligibilityCard">
+                    <span class="eligibility-label">Statutory Eligibility Status</span>
+                    <h2 id="resEligibilityStatus" class="eligibility-status-text">Potentially eligible</h2>
+                    <p id="resEligibilityReason" class="eligibility-reason-text">-</p>
+                    <div class="regulation-cite">
+                      <span class="cite-tag">Statutory Authority:</span>
+                      <span id="resRegulationCite">-</span>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Action Button to Open Direct Reversal Engine -->
+                <div class="action-footer">
+                  <button type="button" id="btnLaunchReversalEngine" class="btn btn-success btn-block">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path></svg>
+                    Launch Direct Refund & Reversal Request Engine
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Direct Refund and Reversal Request Engine (Detailed Action Center) -->
+        <div class="card mt-6" id="directReversalCard">
+          <div class="card-header">
+            <div class="card-title-group">
+              <span class="step-badge">Sections 5-7</span>
+              <h3>Direct Refund and Reversal Request Engine</h3>
+            </div>
+            <div class="badge-group">
+              <span class="section-tag badge-ai">AI ANALYSIS</span>
+              <span class="section-tag badge-customer">CUSTOMER PROVIDED</span>
+              <span class="section-tag badge-manual">MANUAL REVIEW</span>
+            </div>
+          </div>
+
+          <div class="card-body">
+            <div class="reversal-stepper">
+              <div class="step-item active" data-step="1">
+                <span class="step-index">5</span>
+                <span class="step-title">Section 5: Dossier Assembly</span>
+              </div>
+              <div class="step-item" data-step="2">
+                <span class="step-index">6</span>
+                <span class="step-title">Section 6: Customer Consent</span>
+              </div>
+              <div class="step-item" data-step="3">
+                <span class="step-index">7</span>
+                <span class="step-title">Section 7: Gateway Dispatch</span>
+              </div>
+              <div class="step-item" data-step="4">
+                <span class="step-index">✓</span>
+                <span class="step-title">Confirmation & Trace</span>
+              </div>
+            </div>
+
+            <!-- Stepper Container -->
+            <div class="stepper-body">
+              
+              <!-- STEP 1: Dossier Assembly -->
+              <div id="reversalStep1" class="step-content active">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+                  <h4 style="margin:0;">Section 5: Refund/Dispute Request Preparation</h4>
+                  <div>
+                    <span class="section-tag badge-ai">AI ANALYSIS</span>
+                    <span class="section-tag badge-draft">DRAFT — NOT YET SUBMITTED</span>
+                  </div>
+                </div>
+                <div class="dossier-preview-grid">
+                  <div>
+                    <h4>Standardized ISO 20022 / NPCI Dispute Payload</h4>
+                    <p class="text-muted">Standard chargeback schema with Reason Code classification.</p>
+                    <pre id="dossierIsoPayload" class="code-block">Loading dispute specification...</pre>
+                  </div>
+                  <div>
+                    <h4>Official Bank Dispute Notice Letter</h4>
+                    <p class="text-muted">Ready for formal intimation to Principal Nodal Officer & Ombudsman.</p>
+                    <div class="letter-preview-box">
+                      <pre id="dossierLetterText" class="letter-text">Loading formal notice...</pre>
+                    </div>
+                    <button type="button" id="btnCopyLetter" class="btn btn-outline btn-sm mt-2">
+                      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+                      Copy Dispute Letter
+                    </button>
+                  </div>
+                </div>
+
+                <div class="step-actions">
+                  <button type="button" id="btnProceedToConsent" class="btn btn-primary">
+                    Proceed to Customer Consent & Authorization &rarr;
+                  </button>
+                </div>
+              </div>
+
+              <!-- STEP 2: Customer Consent & Digital Authorization -->
+              <div id="reversalStep2" class="step-content hidden">
+                <div class="consent-box">
+                  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                    <h4 style="margin:0;">Section 6: Customer Authorization & Consent</h4>
+                    <span class="section-tag badge-customer">CUSTOMER PROVIDED</span>
+                  </div>
+                  <p class="text-muted">In compliance with electronic banking regulations, customer authorization must be digitally signed before transmitting disputes to financial network switches.</p>
+
+                  <div class="consent-checklist">
+                    <label class="consent-checkbox-label">
+                      <input type="checkbox" id="chkTruth" required>
+                      <span>I hereby declare that all incident details, transaction timestamps, and financial amounts provided are true and accurate under penalties of law.</span>
+                    </label>
+
+                    <label class="consent-checkbox-label">
+                      <input type="checkbox" id="chkAuth" required>
+                      <span>I authorize Unified Banking AI to prepare and transmit this formal dispute package to the issuing bank, acquiring bank, and NPCI UDIR network on my behalf.</span>
+                    </label>
+
+                    <label class="consent-checkbox-label">
+                      <input type="checkbox" id="chkNonGuarantee" required>
+                      <span>I acknowledge that AI Direct Refund Recovery Engine serves as a case preparation and dispute facilitation assistant. AI cannot independently force a bank to debit accounts or guarantee recovery. Final adjudication rests with authorized financial institutions and the Banking Ombudsman.</span>
+                    </label>
+                  </div>
+
+                  <div class="signer-row">
+                    <div class="form-group">
+                      <label for="consentSignerName">Digital Signature (Type Full Name) *</label>
+                      <input type="text" id="consentSignerName" class="form-control" placeholder="e.g. Rohan Deshmukh">
+                    </div>
+                    <div class="signer-meta">
+                      <span>Audit Protocol:</span>
+                      <span class="meta-tag">SHA-256 Tamper-Evident Hash</span>
+                      <span class="meta-tag">IP & Timestamp Recorded</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="step-actions">
+                  <button type="button" class="btn btn-secondary" onclick="window.app.setReversalStep(1)">&larr; Back to Dossier</button>
+                  <button type="button" id="btnSignConsent" class="btn btn-primary">
+                    Record Digital Consent & Authorize Submission &rarr;
+                  </button>
+                </div>
+              </div>
+
+              <!-- STEP 3: Gateway Submission Options & Idempotency -->
+              <div id="reversalStep3" class="step-content hidden">
+                <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:0.75rem;">
+                  <h4 style="margin:0;">Section 7: Submission & Gateway Dispatch</h4>
+                  <div>
+                    <span class="section-tag badge-manual">MANUAL REVIEW</span>
+                    <span class="section-tag badge-official">OFFICIAL PROVIDER RESPONSE</span>
+                  </div>
+                </div>
+                <p class="text-muted">Ensure transmission mode adheres to authorized banking integrations and compliance protocols.</p>
+
+                <div class="gateway-options-grid">
+                  <label class="gateway-card">
+                    <input type="radio" name="gatewayMode" value="SIMULATION_SANDBOX" checked>
+                    <div class="gateway-card-inner">
+                      <div class="gateway-badge">SANDBOX</div>
+                      <h5>NPCI UDIR Simulation Gateway</h5>
+                      <p>Connects to the simulated NPCI Unified Dispute and Issue Resolution network. Validates ISO 20022 schemas and registers simulated inter-bank freeze lien.</p>
+                      <span class="pill-secure">Safe Sandbox Environment</span>
+                    </div>
+                  </label>
+
+                  <label class="gateway-card">
+                    <input type="radio" name="gatewayMode" value="AUTHORIZED_API">
+                    <div class="gateway-card-inner">
+                      <div class="gateway-badge badge-live">LIVE API</div>
+                      <h5>Officially Authorized Bank API</h5>
+                      <p>Transmits directly through authenticated bank core APIs (when bank OAuth credentials/cert are configured). Never marks submitted without verified response.</p>
+                      <span class="pill-warning">Requires Authorized Bank Token</span>
+                    </div>
+                  </label>
+
+                  <label class="gateway-card">
+                    <input type="radio" name="gatewayMode" value="DRAFT_MANUAL">
+                    <div class="gateway-card-inner">
+                      <div class="gateway-badge">MANUAL / DRAFT</div>
+                      <h5>Manual Submission & Nodal Escalation</h5>
+                      <p>Generates certified dispute bundle and direct escalation URLs for Banking Ombudsman (CMS) and Nodal Grievance Redressal Officer.</p>
+                      <span class="pill-info">Certified Customer Packet</span>
+                    </div>
+                  </label>
+                </div>
+
+                <!-- Idempotency & Resiliency Parameters -->
+                <div class="idempotency-control-card">
+                  <div class="idempotency-header">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    <strong>Fintech Reliability & Idempotency Protection</strong>
+                  </div>
+                  <div class="idempotency-grid">
+                    <div>
+                      <span class="label-tiny">Idempotency Key (UUIDv4):</span>
+                      <code id="reversalIdempotencyKey" class="key-tag">Generating...</code>
+                    </div>
+                    <div>
+                      <span class="label-tiny">Network Timeout & Backoff:</span>
+                      <span class="text-sm">Safe 10s Timeout • Max 3 Retries with Jitter</span>
+                    </div>
+                    <div>
+                      <span class="label-tiny">Duplicate Protection:</span>
+                      <span class="text-sm text-success">Duplicate Chargeback Lock Active</span>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="step-actions">
+                  <button type="button" class="btn btn-secondary" onclick="window.app.setReversalStep(2)">&larr; Back to Consent</button>
+                  <button type="button" id="btnExecuteSubmission" class="btn btn-success">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+                    Submit Dispute Request to Gateway
+                  </button>
+                </div>
+              </div>
+
+              <!-- STEP 4: Confirmation & Tracking -->
+              <div id="reversalStep4" class="step-content hidden">
+                <div class="confirmation-box">
+                  <div class="confirm-icon">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                  </div>
+                  <h3 id="submissionTitle">Dispute Successfully Lodged</h3>
+                  <p id="submissionSubtitle" class="text-muted">Your dispute has been recorded and submitted through the selected banking gateway.</p>
+
+                  <div class="submission-summary-grid">
+                    <div class="sum-card">
+                      <span class="sum-label">Official Submission Ref</span>
+                      <strong id="subRefDisplay" class="text-primary">-</strong>
+                    </div>
+                    <div class="sum-card">
+                      <span class="sum-label">Gateway Mode</span>
+                      <strong id="subModeDisplay">-</strong>
+                    </div>
+                    <div class="sum-card">
+                      <span class="sum-label">Submission Timestamp</span>
+                      <strong id="subTimeDisplay">-</strong>
+                    </div>
+                    <div class="sum-card">
+                      <span class="sum-label">Updated Case Status</span>
+                      <span id="subStatusDisplay" class="status-chip chip-primary">Under Investigation</span>
+                    </div>
+                  </div>
+
+                  <div class="official-notice-box">
+                    <strong>Statutory Verification Principle:</strong>
+                    <p>Status will remain 'Under Investigation' until the authorized clearing network confirms fund recovery. <strong>Antigravity adheres to zero-hallucination accounting: money is never marked recovered without formal settlement advice from the authorized provider.</strong></p>
+                  </div>
+
+                  <div class="step-actions">
+                    <button type="button" class="btn btn-outline" onclick="window.app.switchSubTab('tracking-dashboard')">
+                      View in Recovery Tracking Dashboard &rarr;
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SUB-TAB 2: RECOVERY TRACKING DASHBOARD -->
+      <div id="subtab-tracking-dashboard" class="subtab-content hidden">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.25rem;">
+          <div>
+            <h3 style="font-size:1.25rem; font-weight:700; color:var(--text-main); margin-bottom:0.25rem;">Section 8: Recovery Tracking Dashboard</h3>
+            <p class="text-muted" style="font-size:0.85rem; margin-bottom:0;">Live Statutory Case Progression Across 11 Standardized Recovery Statuses</p>
+          </div>
+          <div>
+            <span class="section-tag badge-verified">VERIFIED</span>
+            <span class="section-tag badge-official">OFFICIAL PROVIDER RESPONSE</span>
+          </div>
+        </div>
+        
+        <!-- Professional Fintech KPI Banner -->
+        <div class="kpi-grid">
+          <div class="kpi-card card-reported">
+            <div class="kpi-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+            </div>
+            <div>
+              <span class="kpi-title">Reported Fraud Amount</span>
+              <h2 id="kpiReported" class="kpi-value">₹0.00</h2>
+              <span class="kpi-sub">Total fraud claims intake</span>
+            </div>
+          </div>
+
+          <div class="kpi-card card-requested">
+            <div class="kpi-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+            </div>
+            <div>
+              <span class="kpi-title">Amount Requested</span>
+              <h2 id="kpiRequested" class="kpi-value">₹0.00</h2>
+              <span class="kpi-sub">Disputes filed in network</span>
+            </div>
+          </div>
+
+          <div class="kpi-card card-approved">
+            <div class="kpi-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            </div>
+            <div>
+              <span class="kpi-title">Amount Approved</span>
+              <h2 id="kpiApproved" class="kpi-value">₹0.00</h2>
+              <span class="kpi-sub">Approved by bank adjudicator</span>
+            </div>
+          </div>
+
+          <div class="kpi-card card-recovered">
+            <div class="kpi-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </div>
+            <div>
+              <span class="kpi-title">Confirmed Recovered</span>
+              <h2 id="kpiRecovered" class="kpi-value text-success">₹0.00</h2>
+              <span class="kpi-sub">Verified provider settlement</span>
+            </div>
+          </div>
+
+          <div class="kpi-card card-remaining">
+            <div class="kpi-icon">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            </div>
+            <div>
+              <span class="kpi-title">Remaining Amount</span>
+              <h2 id="kpiRemaining" class="kpi-value">₹0.00</h2>
+              <span class="kpi-sub">Under active pursuit</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Filter & Search Toolbar -->
+        <div class="dashboard-toolbar">
+          <div class="search-box">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" id="dashboardSearch" placeholder="Search case ref, customer name, UTR number, or bank...">
+          </div>
+
+          <div class="filter-group">
+            <label>Filter Status:</label>
+            <select id="dashboardStatusFilter" class="form-control-sm">
+              <option value="">All 11 Statuses</option>
+              <option value="Draft">Draft</option>
+              <option value="Evidence Required">Evidence Required</option>
+              <option value="Ready for Review">Ready for Review</option>
+              <option value="Submitted">Submitted</option>
+              <option value="Under Investigation">Under Investigation</option>
+              <option value="Additional Information Required">Additional Information Required</option>
+              <option value="Refund/Recovery Approved">Refund/Recovery Approved</option>
+              <option value="Partially Recovered">Partially Recovered</option>
+              <option value="Recovered">Recovered</option>
+              <option value="Rejected">Rejected</option>
+              <option value="Closed">Closed</option>
+            </select>
+          </div>
+
+          <button type="button" class="btn btn-outline btn-sm" id="btnRefreshDashboard">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M1 20v-6h6"></path><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            Refresh
+          </button>
+        </div>
+
+        <!-- Cases Table -->
+        <div class="table-container">
+          <table class="data-table" id="casesTable">
+            <thead>
+              <tr>
+                <th>Case Ref</th>
+                <th>Customer</th>
+                <th>Reported / Requested</th>
+                <th>Recovered</th>
+                <th>Channel / Bank</th>
+                <th>Current Status (11 Standard)</th>
+                <th>Eligibility</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="casesTableBody">
+              <tr>
+                <td colspan="8" class="text-center text-muted py-4">Loading active recovery cases...</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <!-- Inline Case Dossier Card (Embedded directly, no popup modal) -->
+        <div id="inlineDossierCard" class="card mt-6 hidden">
+          <div class="card-header">
+            <div>
+              <h3 id="inlineCaseTitle">Case Dossier</h3>
+              <span id="inlineCaseRef" class="text-muted font-mono">UB-CASE-2026-XXXX</span>
+            </div>
+            <button type="button" class="btn btn-secondary btn-sm" onclick="window.app.closeInlineDossier()">Close Dossier &times;</button>
+          </div>
+          <div class="card-body" id="inlineCaseBody">
+            Loading case data...
+          </div>
+        </div>
+
+      </div>
+
+      <!-- SUB-TAB 3: REAL-TIME TRANSACTION SCANNER (Module 1 Existing Feature) -->
+      <div id="subtab-transaction-scanner" class="subtab-content hidden">
+        <div class="grid-2col">
+          <div class="card">
+            <div class="card-header">
+              <h3>Real-Time Fraud Transaction Scanner</h3>
+              <span class="status-chip chip-info">Live Scoring</span>
+            </div>
+            <div class="card-body">
+              <p class="text-muted">Simulate and evaluate real-time electronic transaction risk against velocity, anomaly, and behavioral heuristics.</p>
+              
+              <form id="txnScanForm">
+                <div class="form-group">
+                  <label for="scanAccount">Account Identifier</label>
+                  <input type="text" id="scanAccount" class="form-control" value="AC-981203912">
+                </div>
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="scanAmount">Transaction Amount (₹)</label>
+                    <input type="number" id="scanAmount" class="form-control" value="85000">
+                  </div>
+                  <div class="form-group">
+                    <label for="scanChannel">Channel</label>
+                    <select id="scanChannel" class="form-control">
+                      <option value="UPI">UPI Payment</option>
+                      <option value="NetBanking">Net Banking (IMPS)</option>
+                      <option value="CreditCard">Credit Card POS/CNP</option>
+                      <option value="ATM">ATM Cash Out</option>
+                    </select>
+                  </div>
+                </div>
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="scanLocation">Geolocation IP</label>
+                    <input type="text" id="scanLocation" class="form-control" value="New Delhi (IP 103.21.x.x)">
+                  </div>
+                  <div class="form-group">
+                    <label for="scanTime">Time Velocity</label>
+                    <select id="scanTime" class="form-control">
+                      <option value="Day">Normal Business Hours</option>
+                      <option value="Night">Unusual Window (02:00 AM IST)</option>
+                      <option value="Rapid">Rapid Velocity (3rd txn in 5m)</option>
+                    </select>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-primary btn-block">Scan Transaction Risk</button>
+              </form>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-header">
+              <h3>Scan Assessment & Action Matrix</h3>
+              <span id="scanResultBadge" class="status-chip chip-secondary">Ready</span>
+            </div>
+            <div class="card-body">
+              <div id="scanResultView">
+                <div class="empty-state">
+                  <p>Execute a scan to view real-time risk scores and automated step-up mitigation rules.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- MODULE 2: SMART ID                                            -->
+    <!-- ============================================================= -->
+    <section id="module-smart-id" class="module-view hidden">
+      <div class="module-header-banner">
+        <div>
+          <h2>Module 2: Smart ID</h2>
+          <p>AI Digital Identity Verification, Biometric Liveness, and AML Watchlist Screening</p>
+        </div>
+        <span class="status-chip chip-success">UIDAI & OFAC Compliant</span>
+      </div>
+
+      <div class="grid-2col">
+        <div class="card">
+          <div class="card-header">
+            <h3>Digital KYC Intake & Liveness</h3>
+            <span class="status-chip chip-primary">Anti-Spoofing</span>
+          </div>
+          <div class="card-body">
+            <form id="smartIdForm">
+              <div class="form-group">
+                <label for="idFullName">Full Legal Name *</label>
+                <input type="text" id="idFullName" class="form-control" placeholder="e.g. Priya Nandakumar" required>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="idDocType">Document Type *</label>
+                  <select id="idDocType" class="form-control" required>
+                    <option value="Aadhaar Card">Aadhaar Card (UIDAI Masked)</option>
+                    <option value="PAN Card">PAN Card (Income Tax Dept)</option>
+                    <option value="Passport">Indian Passport</option>
+                    <option value="Voter ID">Voter ID (Election Commission)</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="idDocNumber">Document Number *</label>
+                  <input type="text" id="idDocNumber" class="form-control" placeholder="12-digit Aadhaar or 10-char PAN" required>
+                </div>
+              </div>
+
+              <div class="biometric-box">
+                <div class="biometric-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="7" r="4"></circle><path d="M6 21v-2a4 4 0 0 1 4-4h4a4 4 0 0 1 4 4v2"></path></svg>
+                </div>
+                <div>
+                  <strong>Biometric 3D Liveness Simulation Active</strong>
+                  <p class="text-xs text-muted">Performs facial micro-expression match, optical reflection check, and synthetic deepfake detection.</p>
+                </div>
+              </div>
+
+              <button type="submit" class="btn btn-primary btn-block mt-4">
+                Verify Identity & Screen AML Watchlists
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Smart ID Verification Certificate</h3>
+            <span id="smartIdBadge" class="status-chip chip-secondary">Pending</span>
+          </div>
+          <div class="card-body">
+            <div id="smartIdResultContainer">
+              <div class="empty-state">
+                <p>Submit identity verification details on the left to generate an auditable Smart ID certificate.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SMART ID PRIVATE DOCUMENT VAULT & VERIFICATION LIFECYCLE -->
+      <div class="card mt-4" id="smartIdVaultCard">
+        <div class="card-header">
+          <div class="card-header-titles">
+            <div class="badge-title-group">
+              <span class="step-badge">VAULT</span>
+              <h3>Smart ID Private Document Vault & Storage</h3>
+            </div>
+            <p class="text-xs text-muted">Bank-grade private storage, Row-Level Security (RLS), SHA-256 integrity verification, and document lifecycle management</p>
+          </div>
+          <div class="header-badges">
+            <span class="status-chip chip-info" id="vaultOwnerChip">Customer: CUST-101</span>
+            <span class="status-chip chip-success">Private Non-Public Storage</span>
+          </div>
+        </div>
+        <div class="card-body">
+          
+          <!-- Document Status Summary Metrics -->
+          <div class="metric-row doc-status-metrics mb-3" id="docMetricsRow">
+            <div class="metric-box status-metric-box">
+              <span class="metric-label">Total Documents</span>
+              <strong id="metricTotalDocs">0</strong>
+            </div>
+            <div class="metric-box status-metric-box metric-verified">
+              <span class="metric-label">Verified</span>
+              <strong id="metricVerifiedDocs" class="text-success">0</strong>
+            </div>
+            <div class="metric-box status-metric-box metric-pending">
+              <span class="metric-label">Pending Review</span>
+              <strong id="metricPendingDocs" class="text-warning">0</strong>
+            </div>
+            <div class="metric-box status-metric-box metric-rejected">
+              <span class="metric-label">Rejected</span>
+              <strong id="metricRejectedDocs" class="text-danger">0</strong>
+            </div>
+            <div class="metric-box status-metric-box metric-expired">
+              <span class="metric-label">Expired</span>
+              <strong id="metricExpiredDocs" class="text-warning">0</strong>
+            </div>
+          </div>
+
+          <!-- Document Upload & Replace Section -->
+          <div class="doc-upload-box mb-4">
+            <div class="upload-box-header">
+              <h4 id="uploadFormTitle">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                Secure Customer Document Intake (PDF Only)
+              </h4>
+              <span class="text-xs text-muted">Stored in private backend directory; never accessible via public URLs</span>
+            </div>
+
+            <!-- Replacement Mode Banner (Shown dynamically when replacing) -->
+            <div id="replacementAlertBanner" class="alert-box alert-warning hidden mb-3">
+              <div class="alert-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M1 20v-6h6"></path><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+              </div>
+              <div class="alert-content">
+                <strong>Replacing Document: <span id="replacingDocTitle"></span> (Version <span id="replacingDocVersion"></span>)</strong>
+                <p id="replacingDocReason" class="text-xs"></p>
+              </div>
+              <button type="button" id="btnCancelReplace" class="btn btn-secondary btn-xs">Cancel</button>
+            </div>
+
+            <form id="docUploadForm" class="doc-upload-form">
+              <input type="hidden" id="replaceDocId" value="">
+              <div class="form-row-3">
+                <div class="form-group">
+                  <label for="vaultDocType">Document Type *</label>
+                  <select id="vaultDocType" class="form-control" required>
+                    <option value="PAN Card">PAN Card (Tax Identity)</option>
+                    <option value="Aadhaar Card">Aadhaar Card (UIDAI Masked)</option>
+                    <option value="Passport">Passport (International Identity)</option>
+                    <option value="Salary Slip">Salary Slip (Recent 3 Months)</option>
+                    <option value="Bank Statement">Bank Statement (Operative Account)</option>
+                    <option value="ITR / Form 16">ITR / Form 16 (Audited Financials)</option>
+                    <option value="Utility Bill / Address Proof">Utility Bill / Address Proof</option>
+                    <option value="Business Registration / GST">Business Registration / GST</option>
+                  </select>
+                </div>
+                <div class="form-group">
+                  <label for="vaultExpiryDate">Expiry Date (Where Applicable)</label>
+                  <input type="date" id="vaultExpiryDate" class="form-control" placeholder="YYYY-MM-DD">
+                  <small class="text-xs text-muted">Required for Passports / IDs with validity</small>
+                </div>
+                <div class="form-group">
+                  <label for="vaultPdfFile">Select PDF Document * (Max 10MB)</label>
+                  <input type="file" id="vaultPdfFile" class="form-control" accept="application/pdf,.pdf" required>
+                  <small class="text-xs text-muted">Validated by %PDF magic bytes & SHA-256</small>
+                </div>
+              </div>
+              <div class="doc-upload-actions">
+                <button type="submit" id="btnUploadDoc" class="btn btn-primary">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                  <span id="btnUploadDocText">Upload Document to Private Vault</span>
+                </button>
+                <div class="security-lock-note">
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                  <span>Protected by Row-Level Security (RLS) & Private Path Sandbox</span>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Active Customer Documents Table -->
+          <div class="table-container mb-3">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Doc ID</th>
+                  <th>Document Type</th>
+                  <th>Original Filename & Size</th>
+                  <th>Uploaded Date</th>
+                  <th>Expiry Date</th>
+                  <th>Status</th>
+                  <th>Version</th>
+                  <th class="text-right">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="customerDocsTableBody">
+                <tr>
+                  <td colspan="8" class="text-center text-muted py-4">Loading customer documents...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- INLINE SECURE PDF VIEWER CARD (Zero Popups) -->
+      <div class="card mt-4 hidden" id="inlineDocPreviewCard">
+        <div class="card-header">
+          <div class="card-header-titles">
+            <div class="badge-title-group">
+              <span class="step-badge">PREVIEW</span>
+              <h3 id="previewDocTitle">Inline Document Preview</h3>
+            </div>
+            <p id="previewDocMeta" class="text-xs text-muted font-mono">Doc ID: # -- | SHA-256: --</p>
+          </div>
+          <div class="header-badges">
+            <span class="status-chip chip-success" id="previewStatusBadge">VERIFIED</span>
+            <button type="button" id="btnClosePreview" class="btn btn-secondary btn-xs">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              Close Preview
+            </button>
+          </div>
+        </div>
+        <div class="card-body">
+          <div class="inline-preview-wrapper">
+            <iframe id="inlinePdfFrame" title="PDF Document Viewer" class="inline-pdf-iframe" src="about:blank"></iframe>
+          </div>
+          <div class="preview-footer-notes mt-2">
+            <span class="text-xs text-muted">
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+              Secure Streaming Stream: Session-authenticated byte range delivery. No public URL exposed.
+            </span>
+          </div>
+        </div>
+      </div>
+
+      <!-- AUDIT TRAIL LOGS CARD -->
+      <div class="card mt-4" id="smartIdAuditCard">
+        <div class="card-header">
+          <div class="card-header-titles">
+            <div class="badge-title-group">
+              <span class="step-badge">AUDIT</span>
+              <h3>Document Access & Compliance Audit Trail</h3>
+            </div>
+            <p class="text-xs text-muted">Immutable tamper-evident record of all uploads, previews, downloads, and manager reviews</p>
+          </div>
+          <button type="button" id="btnRefreshAuditLogs" class="btn btn-secondary btn-xs">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M23 4v6h-6"></path><path d="M1 20v-6h6"></path><path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path></svg>
+            Refresh Audit Logs
+          </button>
+        </div>
+        <div class="card-body">
+          <div class="table-container">
+            <table class="data-table">
+              <thead>
+                <tr>
+                  <th>Timestamp (IST)</th>
+                  <th>Actor ID</th>
+                  <th>Role</th>
+                  <th>Action</th>
+                  <th>Doc ID / Type</th>
+                  <th>IP Address</th>
+                  <th>Details & Security Context</th>
+                </tr>
+              </thead>
+              <tbody id="auditLogsTableBody">
+                <tr>
+                  <td colspan="7" class="text-center text-muted py-3">Loading audit logs...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================================================= -->
+    <!-- MODULE 3: AI LOAN DETECTOR — AI LOANFAST 72                   -->
+    <!-- ============================================================= -->
+    <section id="module-loanfast" class="module-view hidden">
+      <div class="module-header-banner">
+        <div>
+          <h2>Module 3: AI Loan Detector — AI LoanFast 72</h2>
+          <p>Instant Credit Risk Underwriting, Debt-to-Income (DTI) Analysis, and 72-Hour Turnaround SLA</p>
+        </div>
+        <span class="status-chip chip-primary">72-Hour Fast-Track SLA</span>
+      </div>
+
+      <div class="grid-2col">
+        <div class="card">
+          <div class="card-header">
+            <h3>Underwriting Intake Form</h3>
+            <span class="status-chip chip-info">Algorithmic Risk Engine</span>
+          </div>
+          <div class="card-body">
+            <form id="loanFastForm">
+              <!-- Loan Type Selector -->
+              <div class="form-group">
+                <label for="loanTypeSelect">Loan Category & Statutory Spec *</label>
+                <select id="loanTypeSelect" class="form-control" required>
+                  <option value="Instant Fast-Track Loan (LoanFast 72)">Instant Fast-Track Loan (LoanFast 72) — 72-Hour Pre-Approval</option>
+                  <option value="Personal Loan">Personal Loan — Unsecured Salaried / Professional</option>
+                  <option value="Home Loan">Home Loan — Mortgage & Property Financing</option>
+                  <option value="Vehicle Loan">Vehicle Loan — Automobile Financing</option>
+                  <option value="Business / MSME Loan">Business / MSME Loan — Commercial Term Credit</option>
+                </select>
+                <small id="loanTypeDesc" class="text-xs text-muted">High-velocity algorithmic pre-approval with guaranteed 72-hour turnaround.</small>
+              </div>
+
+              <div class="form-group">
+                <label for="loanApplicantName">Applicant Full Name *</label>
+                <input type="text" id="loanApplicantName" class="form-control" placeholder="e.g. Aarav Mehta" required>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="loanIncome">Monthly Net Income (₹) *</label>
+                  <input type="number" id="loanIncome" class="form-control" value="125000" min="1000" required>
+                </div>
+                <div class="form-group">
+                  <label for="loanObligations">Existing Monthly EMIs (₹) *</label>
+                  <input type="number" id="loanObligations" class="form-control" value="28000" min="0" required>
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="loanCibil">CIBIL Bureau Score (300-900) *</label>
+                  <input type="number" id="loanCibil" class="form-control" value="782" min="300" max="900" required>
+                </div>
+                <div class="form-group">
+                  <label for="loanEmployment">Employment Category</label>
+                  <select id="loanEmployment" class="form-control">
+                    <option value="Salaried - Tier 1 Corporate">Salaried - Tier 1 Corporate</option>
+                    <option value="Salaried - PSU / Govt">Salaried - PSU / Government</option>
+                    <option value="Self-Employed Professional">Self-Employed Professional</option>
+                    <option value="Business Owner / MSME">Business Owner / MSME</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="loanAmount">Requested Loan (₹) *</label>
+                  <input type="number" id="loanAmount" class="form-control" value="500000" min="10000" step="10000" required>
+                </div>
+                <div class="form-group">
+                  <label for="loanTenor">Tenor (Months) *</label>
+                  <select id="loanTenor" class="form-control">
+                    <option value="12">12 Months (1 Year)</option>
+                    <option value="24">24 Months (2 Years)</option>
+                    <option value="36" selected>36 Months (3 Years)</option>
+                    <option value="48">48 Months (4 Years)</option>
+                    <option value="60">60 Months (5 Years)</option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Smart ID Cross-Module Document Checklist Widget -->
+              <div class="loan-checklist-container mt-3 mb-3" id="loanChecklistContainer">
+                <div class="checklist-header">
+                  <div class="checklist-title-group">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                    <strong>Smart ID Document Verification Checklist</strong>
+                  </div>
+                  <span id="checklistStatusBadge" class="status-chip chip-secondary">Evaluating...</span>
+                </div>
+
+                <div id="checklistItemsList" class="checklist-items-list mt-2">
+                  <div class="text-xs text-muted py-2">Loading document requirements...</div>
+                </div>
+
+                <!-- Gatekeeper Alert Banner -->
+                <div id="gatekeeperAlertBanner" class="alert-box alert-warning mt-2">
+                  <div class="alert-icon">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                  </div>
+                  <div class="alert-content">
+                    <strong id="gatekeeperAlertTitle">Document Checklist Incomplete</strong>
+                    <p id="gatekeeperAlertText" class="text-xs">Loan eligibility assessment is locked until all required documents are active, verified/pending, and not expired or rejected in Smart ID.</p>
+                  </div>
+                  <button type="button" id="btnGoToSmartId" class="btn btn-secondary btn-xs">
+                    Open Smart ID
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"></polyline></svg>
+                  </button>
+                </div>
+
+                <!-- Mandatory Statutory Disclaimer -->
+                <div class="regulatory-disclaimer-card mt-2">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                  <div class="disclaimer-text">
+                    <strong>Statutory Regulatory Notice:</strong> Do not treat document presence as proof of authenticity or guarantee loan approval. Document checklist completion enables algorithmic underwriting and bank manager review. Final credit decision is subject to credit bureau score, debt-to-income analysis, and authorized review.
+                  </div>
+                </div>
+              </div>
+
+              <button type="submit" id="btnEvaluateLoan" class="btn btn-primary btn-block mt-4">
+                Evaluate Credit Risk & Generate 72-Hour Sanction Decision
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Underwriting Decision & XAI Insights</h3>
+            <span id="loanDecisionBadge" class="status-chip chip-secondary">Awaiting Underwriting</span>
+          </div>
+          <div class="card-body">
+            <div id="loanResultContainer">
+              <div class="empty-state">
+                <p>Submit applicant details to evaluate DTI ratio, risk tiering, monthly EMI, and Explainable AI (XAI) factors.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+
+
+
+
+  <!-- Toast Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
+  <!-- Application Logic -->
+  <script src="/js/app.js"></script>
+</body>
+</html>
